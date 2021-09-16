@@ -39,6 +39,30 @@
         <h2>Feaured Mars Image</h2>
         <img src = "{{mars.featured_image_url}}">
       </div>
+     <div class = "col-md-4">
+       <div class = "border">
+         <h4> Mars Facts</h4>
+         {{mars.table | safe}}
+       </div>
+     </div>
     </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-8">
+      <h2 class="align-items-center"><u>Mars Hemisphere</u></h2>
+    </div>
+  </div>
+  <div class="row">
+    {% for hemisphere in mars.hemisphere_list}
+    <div class="col-6 border">
+      <div>
+        <h4>{{hemisphere.title | safe}}</h4>
+      </div>
+      <div>
+        <img width="500 px" height="500 px" src="{{hemisphere.url | safe}}">
+      </div>
+    </div>
+   % endfor %
+  </div>
 </body>
 </html>

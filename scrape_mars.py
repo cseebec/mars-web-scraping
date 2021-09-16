@@ -39,7 +39,8 @@ def scrape():
     mars_earth_df = tables[0]
     mars_earth_df.columns = ['Mars-Earth Comparison', 'Mars', 'Earth']
     mars_earth_df.set_index('Mars-Earth Comparison', inplace=True)
-    html_table = mars_earth_df.to_html('table.html', index=False, classes=['table','table-striped','table-hover'])
+    mars_html_table = mars_earth_df.to_html()
+    mars_html_table = mars_html_table.replace('\n','')
 
     #Navigate to another url
     url = 'https://marshemispheres.com/'
@@ -102,6 +103,10 @@ def scrape():
         "news_title": news_title,
         "news_p": news_p,
         "featured_image_url": featured_image_url,
+        "table": mars_html_table,
         "hemisphere_list": hemisphere_list}
+
+    # Close Browser
+    browser.quit()
 
     return mars_dict
